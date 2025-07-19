@@ -12,10 +12,12 @@ from auth.database import Database
 
 app = FastAPI()
 
-# ✅ Allow frontend (Vite) to talk to backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+        "http://localhost:5173",  # local dev
+        "https://newfrontend-kohl.vercel.app"  # deployed Vercel frontend ✅
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
